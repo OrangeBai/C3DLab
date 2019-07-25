@@ -1,4 +1,4 @@
-from PreProcessing import fly_tag as ft
+from pre_processing import fly_tag as ft
 import config
 import cv2
 import os

@@ -23,31 +23,32 @@ class ToiPoolingConv(Layer):
         assert (len(x) == 2)
 
         img = x[0]  # Shape of imgs is (1, nb_frames, rows, cols, channels)
-        rois = x[1]  # shape of rois is (1, nb_rois, 4 * nb_frames)
+        rois = x[1]  # shape of rois is (1, nb_rois, nb_frames, 4)
 
         outputs = []
         for rois_idx in range(self.nb_rois):
             output = []
             for frame_idx in range(self.nb_frames):
-                x = rois[frame_idx, rois_idx, 0]
-                y = rois[frame_idx, rois_idx, 1]
-                w = rois[frame_idx, rois_idx, 2]
-                h = rois[frame_idx, rois_idx, 3]
+                x = rois[0, rois_idx, frame_idx, 0]
+                y = rois[0, rois_idx, frame_idx, 1]
+                w = rois[0, rois_idx, frame_idx, 2]
+                h = rois[0, rois_idx, frame_idx, 3]
 
                 x = K.cast(x, 'int32')
                 y = K.cast(y, 'int32')
                 w = K.cast(w, 'int32')
                 h = K.cast(h, 'int32')
 
-                rs = tf.image.resize_images(img[:, frame_idx, y:y + h, x:x + w, :], (self.pool_size, self.pool_size))
-                rs = K.expand_dims(rs, axis=1)
+                rs = tf.image.resize_images(img[0, frame_idx, y:y + h, x:x + w, :], (self.pool_size, self.pool_size))
+                rs = K.expand_dims(rs, axis=0)
                 output.append(rs)
 
-            output = K.concatenate(output, axis=1)
-            output = K.expand_dims(output, axis=1)
+            output = K.concatenate(output, axis=0)
+            output = K.expand_dims(output, axis=0)
             outputs.append(output)
 
-        final_output = K.concatenate(outputs, axis=1)
+        final_output = K.concatenate(outputs, axis=0)
+        final_output = K.expand_dims(final_output, axis=0)
 
         return final_output
 

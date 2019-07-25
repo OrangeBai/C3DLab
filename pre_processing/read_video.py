@@ -2,7 +2,7 @@ import cv2
 import os
 import shutil
 import config
-from PreProcessing import fly_tag as ft
+from pre_processing import fly_tag as ft
 
 
 VIDEO_FORMAT = ['.mp4', '.avi']

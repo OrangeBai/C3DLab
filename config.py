@@ -43,6 +43,10 @@ drop_out = 0.5  # Drop out rate of dense layers
 parent = False  # Contains parent classifiers.
 nb_classes = 6  # Action classes
 
+# model config
+model_base_path = r'F:\Experiments\ComputerScience\C3D'
+
+
 
 # Anchor config
 anchor_box_scales = [48, 72, 96]  # Side length of anchor box
