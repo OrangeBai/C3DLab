@@ -4,49 +4,6 @@ import os
 import numpy as np
 
 
-def generate_pickle(video_info):
-    """
-    Generate tags from mat files which are original tags of the data set
-    :param video_info: Video info tuple (Video Name, Video Path, Output_Path)
-    :return: The tag file: output_path/Info.p, which is a pickle file, should be read by Info_reader()
-    """
-    output_path = video_info[2]
-
-    video_name = os.path.splitext(video_info[0])[0]
-    action_name = video_name + '_actions.mat'
-    feat_name = video_name + '_feat.mat'
-    track_name = video_name + '_track.mat'
-
-    action_path = os.path.join(video_info[1], action_name)
-    feat_path = os.path.join(video_info[1], feat_name)
-    track_path = os.path.join(video_info[1], track_name)
-
-    action_mat = loadmat(action_path)
-    beh = action_mat['behs'].tolist()[0]
-    bouts = action_mat['bouts'].tolist()
-    action_list = {'behs': beh, 'bouts': bouts}
-
-    track = loadmat(track_path)
-    trk = track['trk']
-    flag_frames = trk[0, 0]['flag_frames'].tolist()
-    names = trk[0, 0]['names'][0].tolist()
-    data = trk[0, 0]['data'].tolist()
-    track_list = {'flag_frames': flag_frames, 'names': names, 'data': data}
-
-    feat = loadmat(feat_path)
-    feat_names = feat['feat'][0, 0]['names'].tolist()
-    feat_data = feat['feat'][0, 0]['data'].tolist()
-    feat_list = {'feat_names': feat_names, 'data_names': feat_data}
-
-    pickle_stream = {'action': action_list, 'track': track_list, 'feat': feat_list}
-
-    pickle_path = os.path.join(output_path, 'tags.p')
-    with open(pickle_path, 'wb') as writer:
-        pickle.dump(pickle_stream, writer)
-
-    return pickle_path
-
-
 def get_action_and_tags(base_path):
     """
     Get action names and tags of all videos

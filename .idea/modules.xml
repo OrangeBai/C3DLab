@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../BDD-100k/.idea/BDD-100k.iml" filepath="$PROJECT_DIR$/../BDD-100k/.idea/BDD-100k.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/C3DLab.iml" filepath="$PROJECT_DIR$/.idea/C3DLab.iml" />
     </modules>
   </component>
