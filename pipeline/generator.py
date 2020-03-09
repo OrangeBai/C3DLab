@@ -4,31 +4,50 @@ import json
 import math
 import cv2
 import numpy as np
+from random import *
 
 
 class Generator(object):
     def __init__(self):
         self.data_store = None
         self.clip_length = 5
+        self.action_counter = []
+        self.action_indexer = {}
         self.__load_info__()
-        self.gen_label(0, 50)
-        print(1)
+        self.unzip_label()
 
     def __load_info__(self):
         with open(config.video_info, 'r') as file:
             self.data_store = json.load(file)
 
-    def gen_label(self, video_idx, pic_idx):
+    def unzip_label(self):
+        action_indexer = {}
+        for i in range(len(self.data_store)):
+            video_info = self.data_store[i]
+            labels = video_info['label']
+            video_length = video_info['length']
+            for j in range(video_length):
+                for k in range(2):
+                    cur_action = int(labels[0][k][j])
+                    if cur_action not in list(action_indexer.keys()):
+                        action_indexer[cur_action] = [(i, j)]
+                    else:
+                        action_indexer[cur_action].append((i,j))
+        self.action_indexer = action_indexer
+        self.action_counter = [0] * len(action_indexer.keys())
+        return
+
+    def gen_label(self, clip_idx):
         """
         transfer data index into data label
-        :param video_idx: video number
-        :param pic_idx: frame idx
+        :param clip_idx: (video_idx, frame_idx)
         :return: pic, label
         """
+        video_idx, pic_idx = clip_idx
         cur_clip = []
         cur_tag = {'action': [], 'pos': []}
         cur_video_info = self.data_store[video_idx]
-        video_length = 36000
+        video_length = len(cur_video_info['label'][0][0])
         st_idx = pic_idx - math.ceil((self.clip_length - 1) / 2)
         ed_idx = pic_idx + math.ceil((self.clip_length - 1) / 2)
         if ed_idx >= video_length or st_idx < 0:
@@ -48,7 +67,18 @@ class Generator(object):
         return cur_clip, cur_label
 
     def __next__(self):
-        return self.next()
+        next_action = self.__check_min__()
+        frame = choice(self.action_indexer[next_action])
+        self.action_counter[next_action] = self.action_counter[next_action] + 1
+        return self.gen_label(frame)
+
+    def __check_min__(self):
+        min_num = min(self.action_counter)
+        max_num = max(self.action_counter)
+        if min_num < max_num * 0.5:
+            return self.action_counter.index(min_num)
+        else:
+            return randint(0, len(self.action_counter) - 1)
 
     def next(self):
         pass
@@ -56,4 +86,5 @@ class Generator(object):
 
 if __name__ == '__main__':
     g = Generator()
+    next(g)
     print(1)
