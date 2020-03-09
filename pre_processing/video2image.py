@@ -26,8 +26,8 @@ for r, d, f in os.walk(config.video_path):
                     'length':length
                 }
                 img_dir = os.path.join(config.img_path, file_name)
-                while os.path.exists(img_dir):
-                    img_dir = img_dir + '_'
+                # while os.path.exists(img_dir):
+                #     img_dir = img_dir + '_'
                 cur_video['img_dir'] = img_dir
                 video_files.append(cur_video)
 

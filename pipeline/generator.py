@@ -7,7 +7,7 @@ import numpy as np
 from random import *
 
 
-class Generator(object):
+class Generator():
     def __init__(self):
         self.data_store = None
         self.clip_length = 5
@@ -32,7 +32,7 @@ class Generator(object):
                     if cur_action not in list(action_indexer.keys()):
                         action_indexer[cur_action] = [(i, j)]
                     else:
-                        action_indexer[cur_action].append((i,j))
+                        action_indexer[cur_action].append((i, j))
         self.action_indexer = action_indexer
         self.action_counter = [0] * len(action_indexer.keys())
         return
@@ -61,10 +61,15 @@ class Generator(object):
         for i in range(2):
             cur_tag['pos'].append(video_label[1][i][st_idx: ed_idx + 1])
             cur_tag['action'].append(video_label[0][i][pic_idx])
+
         cur_clip = np.array(cur_clip)
-        cur_label = [np.array(cur_tag['pos']), np.array(cur_tag['action'])]
+        cur_clip = np.expand_dims(cur_clip, 0)
+        cur_label = [np.array(cur_tag['pos']).transpose([1, 0, 2]), np.array(cur_tag['action'])]
 
         return cur_clip, cur_label
+
+    def next(self):
+        return self.__next__()
 
     def __next__(self):
         next_action = self.__check_min__()
@@ -80,11 +85,10 @@ class Generator(object):
         else:
             return randint(0, len(self.action_counter) - 1)
 
-    def next(self):
-        pass
-
 
 if __name__ == '__main__':
     g = Generator()
-    next(g)
+    for i in range(10000):
+        next(g)
+        print(i)
     print(1)
