@@ -5,5 +5,7 @@
     <orderEntry type="jdk" jdkName="Python 3.7 (tf)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="BDD-100k" />
+    <orderEntry type="module" module-name="mmsr-master" />
+    <orderEntry type="module" module-name="Keras-SRGAN" />
   </component>
 </module>

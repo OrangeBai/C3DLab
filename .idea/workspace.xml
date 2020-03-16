@@ -2,20 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe428333-af89-4864-bf18-5ff9ac28d3b3" name="Default" comment="some changes">
-      <change afterPath="$PROJECT_DIR$/Scipts/train_c3d.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/base.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nets/RoiPoolingConv.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nets/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nets/extract_1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pipeline/SPN.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Helper/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Helper/losses.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scipts/train_srgan.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nets/LocateNet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nets/SPNPoolingConv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nets/SRGAN.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nets/VGG16.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/vgg.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Keras-SRGAN/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Keras-SRGAN/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Keras-SRGAN/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Keras-SRGAN/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BDD-100k/model/frcnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BDD-100k/model/frcnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BDD-100k/scripts/train_frcnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BDD-100k/scripts/train_frcnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/C3DLab.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/C3DLab.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helper/image_helper.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/c3d_model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Helper/roi_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/roi_helper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scipts/train_c3d.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scipts/train_c3d.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipeline/SPN.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/SPN.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pipeline/generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pre_processing/data_generator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pre_processing/video2image.py" beforeDir="false" afterPath="$PROJECT_DIR$/pre_processing/video2image.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/bicubic.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/bicubic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Keras-SRGAN/simplified/Network.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Keras-SRGAN/simplified/Network.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Keras-SRGAN/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Keras-SRGAN/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +55,9 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/nets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Keras-SRGAN" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -58,30 +69,8 @@
       <recent name="F:\Code\Computer Science\C3DLab\nets" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.train_c3d">
-    <configuration name="bicubic" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="C3DLab" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/bicubic.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="generator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.vgg">
+    <configuration name="SPN" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="C3DLab" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -94,7 +83,29 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pipeline/generator.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pipeline/SPN.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="generator (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BDD-100k" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../BDD-100k/pipeline" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../BDD-100k/pipeline/generator.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -125,21 +136,21 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="util" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="C3DLab" />
+    <configuration name="train_frcnn" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="BDD-100k" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pre_processing" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../BDD-100k/scripts" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pre_processing/util.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../BDD-100k/scripts/train_frcnn.py" />
+      <option name="PARAMETERS" value="-i F:\DataSet\VOCtrainval_06-Nov-2007\VOCdevkit\VOC2007\JPEGImages -l F:\DataSet\VOCtrainval_06-Nov-2007\VOCdevkit\VOC2007\Annotations -o F:\DataSet\VOCtrainval_06-Nov-2007\test --image_height 600 --image_width 600" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -147,7 +158,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="video2image" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="vgg" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="C3DLab" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -155,12 +166,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pre_processing" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pre_processing/video2image.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/vgg.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -170,19 +181,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.video2image" />
-      <item itemvalue="Python.util" />
-      <item itemvalue="Python.bicubic" />
-      <item itemvalue="Python.generator" />
       <item itemvalue="Python.train_c3d" />
+      <item itemvalue="Python.SPN" />
+      <item itemvalue="Python.train_frcnn" />
+      <item itemvalue="Python.generator (1)" />
+      <item itemvalue="Python.vgg" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.vgg" />
+        <item itemvalue="Python.train_frcnn" />
+        <item itemvalue="Python.generator (1)" />
         <item itemvalue="Python.train_c3d" />
-        <item itemvalue="Python.video2image" />
-        <item itemvalue="Python.generator" />
-        <item itemvalue="Python.bicubic" />
-        <item itemvalue="Python.util" />
+        <item itemvalue="Python.SPN" />
       </list>
     </recent_temporary>
   </component>
@@ -201,7 +212,12 @@
       <workItem from="1583675956550" duration="4637000" />
       <workItem from="1583683195891" duration="18000" />
       <workItem from="1583751348225" duration="3993000" />
-      <workItem from="1583770363909" duration="10183000" />
+      <workItem from="1583770363909" duration="10324000" />
+      <workItem from="1583843118289" duration="20074000" />
+      <workItem from="1583953830495" duration="737000" />
+      <workItem from="1584320346118" duration="66000" />
+      <workItem from="1584320934934" duration="3316000" />
+      <workItem from="1584390311771" duration="2768000" />
     </task>
     <task id="LOCAL-00001" summary="some changes">
       <created>1583239248527</created>
@@ -224,17 +240,15 @@
       <option name="project" value="LOCAL" />
       <updated>1583755315296</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="some changes">
+      <created>1583793991908</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1583793991908</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -244,54 +258,62 @@
     <option name="LAST_COMMIT_MESSAGE" value="some changes" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="558" y="214" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583937658694">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="558" y="214" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583937658694" />
+    <state x="705" y="327" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583861558490">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="705" y="327" key="#com.intellij.fileTypes.FileTypeChooser/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583861558490" />
     <state x="679" y="120" key="#vgg16" timestamp="1583078445959">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="679" y="120" key="#vgg16/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583078445959" />
-    <state x="1213" y="131" key="#xdebugger.evaluate" timestamp="1583793827485">
+    <state x="816" y="268" width="914" height="782" key="#xdebugger.evaluate" timestamp="1583940912933">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="1213" y="131" key="#xdebugger.evaluate/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583793827485" />
-    <state x="594" y="117" key="CommitChangelistDialog2" timestamp="1583755314104">
+    <state x="816" y="268" width="914" height="782" key="#xdebugger.evaluate/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583940912933" />
+    <state x="594" y="117" key="CommitChangelistDialog2" timestamp="1583793990329">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="594" y="117" key="CommitChangelistDialog2/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583755314104" />
-    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1583274993667">
+    <state x="594" y="117" key="CommitChangelistDialog2/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583793990329" />
+    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1584321327187">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="740" y="280" key="FileChooserDialogImpl/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583274993667" />
-    <state width="1877" height="327" key="GridCell.Tab.0.bottom" timestamp="1583793972894">
+    <state x="740" y="280" key="FileChooserDialogImpl/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584321327187" />
+    <state width="1877" height="327" key="GridCell.Tab.0.bottom" timestamp="1584400349125">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.0.bottom/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583793972894" />
-    <state width="1877" height="327" key="GridCell.Tab.0.center" timestamp="1583793972894">
+    <state width="1877" height="327" key="GridCell.Tab.0.bottom/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584400349125" />
+    <state width="1877" height="327" key="GridCell.Tab.0.center" timestamp="1584400349125">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.0.center/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583793972894" />
-    <state width="1877" height="327" key="GridCell.Tab.0.left" timestamp="1583793972894">
+    <state width="1877" height="327" key="GridCell.Tab.0.center/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584400349125" />
+    <state width="1877" height="327" key="GridCell.Tab.0.left" timestamp="1584400349125">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.0.left/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583793972894" />
-    <state width="1877" height="327" key="GridCell.Tab.0.right" timestamp="1583793972894">
+    <state width="1877" height="327" key="GridCell.Tab.0.left/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584400349125" />
+    <state width="1877" height="327" key="GridCell.Tab.0.right" timestamp="1584400349125">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.0.right/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583793972894" />
-    <state width="1877" height="327" key="GridCell.Tab.1.bottom" timestamp="1583793972894">
+    <state width="1877" height="327" key="GridCell.Tab.0.right/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584400349125" />
+    <state width="1877" height="327" key="GridCell.Tab.1.bottom" timestamp="1584400349126">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.bottom/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583793972894" />
-    <state width="1877" height="327" key="GridCell.Tab.1.center" timestamp="1583793972894">
+    <state width="1877" height="327" key="GridCell.Tab.1.bottom/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584400349126" />
+    <state width="1877" height="327" key="GridCell.Tab.1.center" timestamp="1584400349126">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.center/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583793972894" />
-    <state width="1877" height="327" key="GridCell.Tab.1.left" timestamp="1583793972894">
+    <state width="1877" height="327" key="GridCell.Tab.1.center/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584400349126" />
+    <state width="1877" height="327" key="GridCell.Tab.1.left" timestamp="1584400349126">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.left/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583793972894" />
-    <state width="1877" height="327" key="GridCell.Tab.1.right" timestamp="1583793972894">
+    <state width="1877" height="327" key="GridCell.Tab.1.left/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584400349126" />
+    <state width="1877" height="327" key="GridCell.Tab.1.right" timestamp="1584400349126">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.right/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583793972894" />
+    <state width="1877" height="327" key="GridCell.Tab.1.right/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584400349126" />
     <state x="461" y="167" key="SettingsEditor" timestamp="1583078510167">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -300,10 +322,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="968" height="533" key="XDebugger.FullValuePopup/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583162120620" />
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1583770369451">
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1584390311756">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583770369451" />
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584390311756" />
     <state x="504" y="261" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1583161444560">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -397,9 +419,189 @@
           <option name="timeStamp" value="213" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/helper/losses.py</url>
+          <line>46</line>
+          <option name="timeStamp" value="246" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/helper/losses.py</url>
+          <line>45</line>
+          <option name="timeStamp" value="248" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/helper/losses.py</url>
+          <line>42</line>
+          <option name="timeStamp" value="252" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/helper/losses.py</url>
+          <line>43</line>
+          <option name="timeStamp" value="253" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/helper/losses.py</url>
+          <line>41</line>
+          <option name="timeStamp" value="254" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/helper/losses.py</url>
+          <line>44</line>
+          <option name="timeStamp" value="255" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/scipts/train_c3d.py</url>
-          <line>35</line>
-          <option name="timeStamp" value="234" />
+          <line>51</line>
+          <option name="timeStamp" value="281" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="285" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="286" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
+          <line>37</line>
+          <option name="timeStamp" value="287" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
+          <line>43</line>
+          <option name="timeStamp" value="288" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
+          <line>50</line>
+          <option name="timeStamp" value="289" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
+          <line>60</line>
+          <option name="timeStamp" value="290" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
+          <line>63</line>
+          <option name="timeStamp" value="291" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
+          <line>27</line>
+          <option name="timeStamp" value="292" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="293" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
+          <line>29</line>
+          <option name="timeStamp" value="294" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
+          <line>51</line>
+          <option name="timeStamp" value="295" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
+          <line>53</line>
+          <option name="timeStamp" value="296" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
+          <line>55</line>
+          <option name="timeStamp" value="297" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
+          <line>57</line>
+          <option name="timeStamp" value="298" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
+          <line>58</line>
+          <option name="timeStamp" value="299" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
+          <line>44</line>
+          <option name="timeStamp" value="300" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
+          <line>56</line>
+          <option name="timeStamp" value="301" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
+          <line>64</line>
+          <option name="timeStamp" value="302" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
+          <line>66</line>
+          <option name="timeStamp" value="303" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../BDD-100k/nets/RoiPoolingConv.py</url>
+          <line>55</line>
+          <option name="timeStamp" value="305" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../BDD-100k/nets/RoiPoolingConv.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="306" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://D:/Software/Working/Anaconda3/envs/tf/Lib/site-packages/keras_applications/vgg19.py</url>
+          <line>210</line>
+          <option name="timeStamp" value="308" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://D:/Software/Working/Anaconda3/envs/tf/Lib/site-packages/keras_applications/vgg19.py</url>
+          <line>209</line>
+          <option name="timeStamp" value="309" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://D:/Software/Working/Anaconda3/envs/tf/Lib/site-packages/keras_applications/vgg19.py</url>
+          <line>208</line>
+          <option name="timeStamp" value="310" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://D:/Software/Working/Anaconda3/envs/tf/Lib/site-packages/keras_applications/vgg19.py</url>
+          <line>215</line>
+          <option name="timeStamp" value="311" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://D:/Software/Working/Anaconda3/envs/tf/Lib/site-packages/keras_applications/vgg19.py</url>
+          <line>216</line>
+          <option name="timeStamp" value="312" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://D:/Software/Working/Anaconda3/envs/tf/Lib/site-packages/keras_applications/vgg19.py</url>
+          <line>218</line>
+          <option name="timeStamp" value="313" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://D:/Software/Working/Anaconda3/envs/tf/Lib/site-packages/keras_applications/vgg19.py</url>
+          <line>224</line>
+          <option name="timeStamp" value="314" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://D:/Software/Working/Anaconda3/envs/tf/Lib/site-packages/keras_applications/vgg19.py</url>
+          <line>225</line>
+          <option name="timeStamp" value="315" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://D:/Software/Working/Anaconda3/envs/tf/Lib/site-packages/keras_applications/vgg19.py</url>
+          <line>227</line>
+          <option name="timeStamp" value="316" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -416,9 +618,13 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/C3DLab$util.coverage" NAME="util Coverage Results" MODIFIED="1583164158877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pre_processing" />
     <SUITE FILE_PATH="coverage/C3DLab$vgg16.coverage" NAME="vgg16 Coverage Results" MODIFIED="1583078446016" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../BDD-100k/nets" />
-    <SUITE FILE_PATH="coverage/C3DLab$train_c3d.coverage" NAME="train_c3d Coverage Results" MODIFIED="1583793945097" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scipts" />
+    <SUITE FILE_PATH="coverage/C3DLab$train_c3d.coverage" NAME="train_c3d Coverage Results" MODIFIED="1583935579262" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scipts" />
     <SUITE FILE_PATH="coverage/C3DLab$bicubic.coverage" NAME="bicubic Coverage Results" MODIFIED="1583275831629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/C3DLab$SPN.coverage" NAME="SPN Coverage Results" MODIFIED="1583875591074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pipeline" />
     <SUITE FILE_PATH="coverage/C3DLab$generator.coverage" NAME="generator Coverage Results" MODIFIED="1583770416530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pipeline" />
+    <SUITE FILE_PATH="coverage/C3DLab$train_frcnn.coverage" NAME="train_frcnn Coverage Results" MODIFIED="1583940806941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../BDD-100k/scripts" />
+    <SUITE FILE_PATH="coverage/C3DLab$vgg.coverage" NAME="vgg Coverage Results" MODIFIED="1584400349114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/C3DLab$generator__1_.coverage" NAME="generator (1) Coverage Results" MODIFIED="1583936899589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../BDD-100k/pipeline" />
     <SUITE FILE_PATH="coverage/C3DLab$video2image.coverage" NAME="video2image Coverage Results" MODIFIED="1583792893502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pre_processing" />
   </component>
 </project>

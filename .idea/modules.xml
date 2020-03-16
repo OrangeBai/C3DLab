@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../BDD-100k/.idea/BDD-100k.iml" filepath="$PROJECT_DIR$/../BDD-100k/.idea/BDD-100k.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/C3DLab.iml" filepath="$PROJECT_DIR$/.idea/C3DLab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Keras-SRGAN/.idea/Keras-SRGAN.iml" filepath="$PROJECT_DIR$/../Keras-SRGAN/.idea/Keras-SRGAN.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../mmsr-master/.idea/mmsr-master.iml" filepath="$PROJECT_DIR$/../mmsr-master/.idea/mmsr-master.iml" />
     </modules>
   </component>
 </project>

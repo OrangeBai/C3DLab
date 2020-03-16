@@ -7,7 +7,7 @@ import numpy as np
 from random import *
 
 
-class Generator():
+class Generator:
     def __init__(self):
         self.data_store = None
         self.clip_length = 5
@@ -72,10 +72,14 @@ class Generator():
         return self.__next__()
 
     def __next__(self):
-        next_action = self.__check_min__()
-        frame = choice(self.action_indexer[next_action])
+        while 1:
+            next_action = self.__check_min__()
+            frame = choice(self.action_indexer[next_action])
+            res = self.gen_label(frame)
+            if res is not None:
+                break
         self.action_counter[next_action] = self.action_counter[next_action] + 1
-        return self.gen_label(frame)
+        return res
 
     def __check_min__(self):
         min_num = min(self.action_counter)

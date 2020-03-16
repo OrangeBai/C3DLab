@@ -16,13 +16,13 @@ class SPN(BaseConfig):
         @param num_cls: classification class
         """
         super().__init__()
-        self.downscale=4
-        self.anchor_box_scale = [32, 48]
+        self.downscale = 4
+        self.anchor_box_scale = [16, 32, 48]
         self.anchor_box_ratio = [(1, 1), (1, 2), (2, 1), (math.sqrt(2), 1), (1, math.sqrt(2))]
         self.anchor_sets = [(scale, ratio) for scale in self.anchor_box_scale for ratio in self.anchor_box_ratio]
 
         self.num_anchors = len(self.anchor_sets)
-        self.rpn_positive = 0.5
+        self.rpn_positive = 0.6
         self.rpn_negative = 0.3
         self.num_cls = num_cls
         self.threshold = 0.5
@@ -30,7 +30,7 @@ class SPN(BaseConfig):
         self.feature_shape = (self.img_shape[0] // self.downscale, self.img_shape[1] // self.downscale, 512)
         self.pooling_region = 5
         self.num_roi = 8
-        self.num_rpn_valid = 256
+        self.num_rpn_valid = 128
 
     def cal_gt_tags(self, labels):
         """
@@ -140,16 +140,20 @@ class SPN(BaseConfig):
         num_pos = len(pos_loc[0])
         num_neg = len(neg_loc[0])
 
-        if num_pos > self.num_rpn_valid:
+        if num_pos > self.num_rpn_valid / 2:
             val_loc = random.sample(range(len(neg_loc[0])), self.num_rpn_valid)
             box_valid[pos_loc[0][val_loc], pos_loc[1][val_loc], pos_loc[2][val_loc]] = 0
 
         if num_neg > num_pos:
-            val_loc = random.sample(range(len(neg_loc[0])),  num_neg - num_pos)
+            val_loc = random.sample(range(len(neg_loc[0])), num_neg - num_pos)
             box_valid[neg_loc[0][val_loc], neg_loc[1][val_loc], neg_loc[2][val_loc]] = 0
 
         rpn_cls = np.concatenate([box_valid, box_signal], axis=2)
         rpn_reg = np.concatenate([box_rpn_valid, box_rpn_reg], axis=2)
 
-        rpn_cls_valid = sum(sum(sum(box_signal)))
+        # rpn_cls = np.array(box_signal)
+        # rpn_reg = np.array(box_rpn_reg)
+
+        # print(num_pos)
+        rpn_cls_valid = sum(sum(sum(box_rpn_valid)))
         return rpn_cls, rpn_reg, box_class, box_raw, rpn_cls_valid
