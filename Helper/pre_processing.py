@@ -12,6 +12,7 @@ def video2image(input_path, output_path, info_path, extract_img=True):
     :param input_path: Video base path
     :param output_path: Image output path
     :param info_path: Info path
+    :param extract_img: Boolean, if true, extract all images
     :return: None
     """
     video_files = []

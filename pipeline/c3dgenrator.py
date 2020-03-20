@@ -4,13 +4,14 @@ import json
 import math
 import cv2
 import numpy as np
-from random import *
+from random import randint, choice
 
 
 class DataGenerator:
-    def __init__(self, info_path):
+    def __init__(self, info_path, batch_size=1):
         self.data_store = None
         self.__load_info__(info_path)
+        self.batch_size = batch_size
 
     def __load_info__(self, info_path):
         with open(info_path, 'r') as file:
@@ -20,12 +21,15 @@ class DataGenerator:
         pass
 
     def next(self):
-        pass
+        return self.__next__()
+
+    def __iter__(self):
+        return self
 
 
 class C3DGenerator(DataGenerator):
-    def __init__(self, info_path):
-        super().__init__(info_path)
+    def __init__(self, info_path, batch_size=1):
+        super().__init__(info_path, batch_size)
         self.clip_length = 5
         self.action_counter = []
         self.action_indexer = {}
@@ -79,10 +83,10 @@ class C3DGenerator(DataGenerator):
 
         return cur_clip, cur_label
 
-    def next(self):
-        return self.__next__()
-
     def __next__(self):
+        return self.next()
+
+    def next(self):
         while 1:
             next_action = self.__check_min__()
             frame = choice(self.action_indexer[next_action])
@@ -102,9 +106,8 @@ class C3DGenerator(DataGenerator):
 
 
 class SRGANGenerator(DataGenerator):
-    def __init__(self, info_path):
-        super().__init__(info_path)
-        print(1)
+    def __init__(self, info_path, batch_size=1):
+        super().__init__(info_path, batch_size)
 
     def gen_label(self, clip_idx):
         video_idx, pic_idx = clip_idx
@@ -114,10 +117,28 @@ class SRGANGenerator(DataGenerator):
         cur_img = cv2.imread(cur_img_path)
         video_label = cur_video_info['label']
         for i in range(2):
-            cur_tag['pos'].append(video_label[1][i][pic_idx: pic_idx + 1])
+            cur_tag['pos'].append(video_label[1][i][pic_idx])
             cur_tag['action'].append(video_label[0][i][pic_idx])
 
         return np.array(cur_img), [np.array(cur_tag['pos']), np.array(cur_tag['action'])]
+
+    def __next__(self):
+        imgs = []
+        pos = []
+        action = []
+        for i in range(self.batch_size):
+            img, tag = self.next()
+            imgs.append(img)
+            pos.append(tag[0])
+            action.append(tag[1])
+        imgs = np.array(imgs).astype('float32')
+        pos = np.array(pos).astype('float32')
+        action = np.array(action).astype('float32')
+        if self.batch_size == 1:
+            imgs = np.expand_dims(imgs, axis=0)
+            pos = np.expand_dims(pos, axis=0)
+            action = np.expand_dims(action, axis=0)
+        return imgs, [pos, action]
 
     def next(self):
         cur_store_idx = choice(range(len(self.data_store)))
@@ -129,12 +150,13 @@ class SRGANGenerator(DataGenerator):
 
 
 if __name__ == '__main__':
-    # g = C3DGenerator(config.video_info)
+    # g = C3DGenerator(config.video_info, batch_size=1)
     # for i in range(10):
-    #     next(g)
+    #     b = next(g)
     #     print(i)
     # print(1)
-    # g2 = SRGANGenerator(config.hr_video_info)
-    # a = g2.next()
-    # print(1)
+    g2 = SRGANGenerator(config.hr_video_info, 4)
+    g = iter(g2)
+    a = next(g)
+    print(1)
     pass

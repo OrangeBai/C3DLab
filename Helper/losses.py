@@ -58,8 +58,8 @@ def vgg_loss_d(image_shape):
         vgg19 = VGG19(include_top=False, weights='imagenet', input_shape=image_shape)
         vgg19.trainable = False
         # Make trainable as False
-        for l in vgg19.layers:
-            l.trainable = False
+        for layer in vgg19.layers:
+            layer.trainable = False
         model = Model(inputs=vgg19.input, outputs=vgg19.get_layer('block5_conv4').output)
         model.trainable = False
 

@@ -40,69 +40,70 @@ def discriminator_block(model, filters, kernel_size, strides):
     return model
 
 
-class Generator(object):
+def generator(input_shape, upscale_times=2):
 
-    def __init__(self, noise_shape):
+    gen_input = Input(shape=input_shape)
 
-        self.noise_shape = noise_shape
+    model = Conv2D(filters=64, kernel_size=9, strides=1, padding="same")(gen_input)
+    model = PReLU(alpha_initializer='zeros', alpha_regularizer=None, alpha_constraint=None, shared_axes=[1, 2])(
+        model)
 
-    def generator(self):
+    gen_model = model
 
-        gen_input = Input(shape=self.noise_shape)
+    # Using 16 Residual Blocks
+    for index in range(8):
+        model = res_block_gen(model, 3, 64, 1)
 
-        model = Conv2D(filters=64, kernel_size=9, strides=1, padding="same")(gen_input)
-        model = PReLU(alpha_initializer='zeros', alpha_regularizer=None, alpha_constraint=None, shared_axes=[1, 2])(
-            model)
+    model = Conv2D(filters=64, kernel_size=3, strides=1, padding="same")(model)
+    model = BatchNormalization(momentum=0.5)(model)
+    model = add([gen_model, model])
 
-        gen_model = model
+    # Using 2 UpSampling Blocks
+    for index in range(upscale_times):
+        model = up_sampling_block(model, 3, 256, 1)
 
-        # Using 16 Residual Blocks
-        for index in range(8):
-            model = res_block_gen(model, 3, 64, 1)
+    model = Conv2D(filters=3, kernel_size=9, strides=1, padding="same")(model)
+    model = Activation('tanh')(model)
 
-        model = Conv2D(filters=64, kernel_size=3, strides=1, padding="same")(model)
-        model = BatchNormalization(momentum=0.5)(model)
-        model = add([gen_model, model])
+    generator_model = Model(inputs=gen_input, outputs=model)
 
-        # Using 2 UpSampling Blocks
-        for index in range(2):
-            model = up_sampling_block(model, 3, 256, 1)
-
-        model = Conv2D(filters=3, kernel_size=9, strides=1, padding="same")(model)
-        model = Activation('tanh')(model)
-
-        generator_model = Model(inputs=gen_input, outputs=model)
-
-        return generator_model
+    return generator_model
 
 
-# Network Architecture is same as given in Paper https://arxiv.org/pdf/1609.04802.pdf
-class Discriminator(object):
+def discriminator(image_shape):
+    dis_input = Input(shape=image_shape)
 
-    def __init__(self, image_shape):
-        self.image_shape = image_shape
+    model = Conv2D(filters=64, kernel_size=3, strides=1, padding="same")(dis_input)
+    model = LeakyReLU(alpha=0.2)(model)
 
-    def discriminator(self):
-        dis_input = Input(shape=self.image_shape)
+    model = discriminator_block(model, 64, 3, 2)
+    model = discriminator_block(model, 128, 3, 1)
+    model = discriminator_block(model, 128, 3, 2)
+    model = discriminator_block(model, 256, 3, 1)
+    model = discriminator_block(model, 256, 3, 2)
+    model = discriminator_block(model, 512, 3, 1)
+    model = discriminator_block(model, 512, 3, 2)
 
-        model = Conv2D(filters=64, kernel_size=3, strides=1, padding="same")(dis_input)
-        model = LeakyReLU(alpha=0.2)(model)
+    model = Flatten()(model)
+    model = Dense(1024)(model)
+    model = LeakyReLU(alpha=0.2)(model)
 
-        model = discriminator_block(model, 64, 3, 2)
-        model = discriminator_block(model, 128, 3, 1)
-        model = discriminator_block(model, 128, 3, 2)
-        model = discriminator_block(model, 256, 3, 1)
-        model = discriminator_block(model, 256, 3, 2)
-        model = discriminator_block(model, 512, 3, 1)
-        model = discriminator_block(model, 512, 3, 2)
+    model = Dense(1)(model)
+    model = Activation('sigmoid')(model)
 
-        model = Flatten()(model)
-        model = Dense(1024)(model)
-        model = LeakyReLU(alpha=0.2)(model)
+    discriminator_model = Model(inputs=dis_input, outputs=model)
 
-        model = Dense(1)(model)
-        model = Activation('sigmoid')(model)
+    return discriminator_model
 
-        discriminator_model = Model(inputs=dis_input, outputs=model)
 
-        return discriminator_model
+def get_gan_network(discriminator, shape, generator, optimizer, vgg_loss):
+    discriminator.trainable = False
+    gan_input = Input(shape=shape)
+    x = generator(gan_input)
+    gan_output = discriminator(x)
+    gan = Model(inputs=gan_input, outputs=[x, gan_output])
+    gan.compile(loss=[vgg_loss, "binary_crossentropy"],
+                loss_weights=[1., 1e-3],
+                optimizer=optimizer)
+
+    return gan
