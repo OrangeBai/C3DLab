@@ -3,6 +3,57 @@ import cv2
 from scipy.io import loadmat
 import math
 import numpy as np
+import json
+
+
+def video2image(input_path, output_path, info_path, extract_img=True):
+    """
+    Extract images from video, load json files
+    :param input_path: Video base path
+    :param output_path: Image output path
+    :param info_path: Info path
+    :return: None
+    """
+    video_files = []
+    info = {
+        'action': '_actions.mat',
+        'feat': '_feat.mat',
+        'track': '_track.mat'
+    }
+    for r, d, f in os.walk(input_path):
+        for file in f:
+            file_ext = os.path.splitext(file)[-1]
+            if file_ext in ['.mp4', '.avi']:
+                file_name = os.path.splitext(file)[0]
+                if file_name + info['action'] in f and file_name + info['feat'] in f and file_name + info['track'] in f:
+                    video_path = os.path.join(r, file)
+                    cap = cv2.VideoCapture(video_path)
+                    length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+                    cur_video = {
+                        'name': file_name,  # file_name
+                        'path': video_path,  # file_path
+                        'dir': r,  # directory
+                        'action': os.path.join(r, file_name + info['action']),  # action mat path
+                        'feat': os.path.join(r, file_name + info['feat']),  # feature mat path
+                        'track': os.path.join(r, file_name + info['track']),  # track mat path
+                        'length': length
+                    }
+                    img_dir = os.path.join(output_path, file_name)
+                    # while os.path.exists(img_dir):
+                    #     img_dir = img_dir + '_'
+                    cur_video['img_dir'] = img_dir
+                    video_files.append(cur_video)
+
+    for video_info in video_files:
+        data = generate_pickle(video_info)
+        video_info['label'] = data[:2]
+        if extract_img:
+            extract_video(video_info['path'], video_info['img_dir'], 6)
+
+    with open(info_path, 'w') as f:
+        json.dump(video_files, f)
+
+    return
 
 
 def extract_video(video_path, out_dir, name_length, ext='.jpg'):
@@ -64,15 +115,15 @@ def generate_pickle(video_info):
     pickle_stream = {'action': action_list, 'track': track_list, 'feat': feat_list}
 
     video_length = len(data[0])
-    behs = np.zeros((2, video_length))
+    beh = np.zeros((2, video_length))
     for i in range(len(bouts)):
         cur_fly = bouts[i]
         for j in range(len(cur_fly)):
             cur_bouts = cur_fly[j]
             for bout in cur_bouts:
                 for frame in range(bout[0], bout[1] + 1):
-                    behs[i][frame] = j + 1
-    behs = behs.tolist()
+                    beh[i][frame] = j + 1
+    beh = beh.tolist()
     loc = np.zeros((2, video_length, 4))
     for i in range(len(data)):
         cur_fly = data[i]
@@ -80,14 +131,14 @@ def generate_pickle(video_info):
             cur_track_data = cur_fly[frame]
             loc[i, frame, :] = cal_bbox(cur_track_data)
     loc = loc.tolist()
-    return behs, loc, pickle_stream
+    return beh, loc, pickle_stream
 
 
 def cal_bbox(data):
     """
     transfer track data into bounding boxes
     :param data: x_center, y_center, ori, max_axis_length, min_axis_length
-    :return: 
+    :return: bounding box
     """
     xc, yc, ori, l, d = data[:5]
     w1, w2 = data[-2:]

@@ -2,19 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe428333-af89-4864-bf18-5ff9ac28d3b3" name="Default" comment="some changes">
-      <change afterPath="$PROJECT_DIR$/pre_processing/extract_bg.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Helper/losses.py" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/losses.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scipts/PreProcessing_1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scipts/train_c3d.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scipts/train_c3d.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scipts/train_srgan.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scipts/train_srgan.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nets/SRGAN.py" beforeDir="false" afterPath="$PROJECT_DIR$/nets/SRGAN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pipeline/SPN.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/SPN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pipeline/generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/c3dgenrator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pre_processing/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/pre_processing/util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pre_processing/video2image.py" beforeDir="false" afterPath="$PROJECT_DIR$/pre_processing/video2image.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/bicubic.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/bicubic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pre_processing/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pre_processing/extract_bg.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pre_processing/fly_tag.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pre_processing/read_video.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pre_processing/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/pre_processing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pre_processing/video2image.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scipts/video2image.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,15 +46,16 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\Code\Computer Science\C3DLab\pipeline" />
-      <recent name="F:\Code\Computer Science\C3DLab\helper" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\Code\Computer Science\C3DLab\nets" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Code\Computer Science\C3DLab\scipts" />
+      <recent name="F:\Code\Computer Science\C3DLab\helper" />
+      <recent name="F:\Code\Computer Science\C3DLab\pipeline" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python.train_srgan">
+  <component name="RunManager" selected="Python.video2image (1)">
     <configuration name="ViBe" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="C3DLab" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -73,28 +70,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/helper/ViBe.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="bicubic" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="C3DLab" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/bicubic.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -147,6 +122,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="video2image (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="C3DLab" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/scipts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scipts/video2image.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="video2image" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="C3DLab" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -160,7 +157,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pre_processing/video2image.py" />
+      <option name="SCRIPT_NAME" value="F:\Code\Computer Science\C3DLab\scipts\video2image.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -170,19 +167,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.video2image" />
-      <item itemvalue="Python.bicubic" />
       <item itemvalue="Python.ViBe" />
       <item itemvalue="Python.c3dgenrator" />
       <item itemvalue="Python.train_srgan" />
+      <item itemvalue="Python.video2image" />
+      <item itemvalue="Python.video2image (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.video2image (1)" />
         <item itemvalue="Python.train_srgan" />
         <item itemvalue="Python.c3dgenrator" />
         <item itemvalue="Python.ViBe" />
         <item itemvalue="Python.video2image" />
-        <item itemvalue="Python.bicubic" />
       </list>
     </recent_temporary>
   </component>
@@ -208,7 +205,7 @@
       <workItem from="1584320934934" duration="3316000" />
       <workItem from="1584390311771" duration="11981000" />
       <workItem from="1584493856504" duration="7861000" />
-      <workItem from="1584672613627" duration="222000" />
+      <workItem from="1584672613627" duration="1568000" />
     </task>
     <task id="LOCAL-00001" summary="some changes">
       <created>1583239248527</created>
@@ -245,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584400446234</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="some changes">
+      <created>1584672861666</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1584672861666</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,54 +276,54 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="679" y="120" key="#vgg16/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583078445959" />
-    <state x="318" y="268" width="914" height="782" key="#xdebugger.evaluate" timestamp="1584500244706">
+    <state x="318" y="268" width="914" height="782" key="#xdebugger.evaluate" timestamp="1584674026040">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="318" y="268" width="914" height="782" key="#xdebugger.evaluate/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584500244706" />
-    <state x="594" y="117" key="CommitChangelistDialog2" timestamp="1584400442737">
+    <state x="318" y="268" width="914" height="782" key="#xdebugger.evaluate/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584674026040" />
+    <state x="594" y="117" key="CommitChangelistDialog2" timestamp="1584672859182">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="594" y="117" key="CommitChangelistDialog2/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584400442737" />
+    <state x="594" y="117" key="CommitChangelistDialog2/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584672859182" />
     <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1584321327187">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="740" y="280" key="FileChooserDialogImpl/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584321327187" />
-    <state width="1877" height="292" key="GridCell.Tab.0.bottom" timestamp="1584501726178">
+    <state width="1877" height="327" key="GridCell.Tab.0.bottom" timestamp="1584674092687">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1237" height="180" key="GridCell.Tab.0.bottom/-1920.0.1280.700/0.0.1920.1050@-1920.0.1280.700" timestamp="1584414343629" />
-    <state width="1877" height="292" key="GridCell.Tab.0.bottom/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584501726178" />
-    <state width="1877" height="292" key="GridCell.Tab.0.center" timestamp="1584501726178">
+    <state width="1877" height="327" key="GridCell.Tab.0.bottom/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584674092687" />
+    <state width="1877" height="327" key="GridCell.Tab.0.center" timestamp="1584674092687">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1237" height="180" key="GridCell.Tab.0.center/-1920.0.1280.700/0.0.1920.1050@-1920.0.1280.700" timestamp="1584414343629" />
-    <state width="1877" height="292" key="GridCell.Tab.0.center/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584501726178" />
-    <state width="1877" height="292" key="GridCell.Tab.0.left" timestamp="1584501726178">
+    <state width="1877" height="327" key="GridCell.Tab.0.center/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584674092687" />
+    <state width="1877" height="327" key="GridCell.Tab.0.left" timestamp="1584674092687">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1237" height="180" key="GridCell.Tab.0.left/-1920.0.1280.700/0.0.1920.1050@-1920.0.1280.700" timestamp="1584414343628" />
-    <state width="1877" height="292" key="GridCell.Tab.0.left/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584501726178" />
-    <state width="1877" height="292" key="GridCell.Tab.0.right" timestamp="1584501726178">
+    <state width="1877" height="327" key="GridCell.Tab.0.left/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584674092687" />
+    <state width="1877" height="327" key="GridCell.Tab.0.right" timestamp="1584674092687">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1237" height="180" key="GridCell.Tab.0.right/-1920.0.1280.700/0.0.1920.1050@-1920.0.1280.700" timestamp="1584414343629" />
-    <state width="1877" height="292" key="GridCell.Tab.0.right/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584501726178" />
-    <state width="1877" height="327" key="GridCell.Tab.1.bottom" timestamp="1584501511417">
+    <state width="1877" height="327" key="GridCell.Tab.0.right/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584674092687" />
+    <state width="1877" height="327" key="GridCell.Tab.1.bottom" timestamp="1584674092688">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.bottom/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584501511417" />
-    <state width="1877" height="327" key="GridCell.Tab.1.center" timestamp="1584501511417">
+    <state width="1877" height="327" key="GridCell.Tab.1.bottom/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584674092688" />
+    <state width="1877" height="327" key="GridCell.Tab.1.center" timestamp="1584674092688">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.center/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584501511417" />
-    <state width="1877" height="327" key="GridCell.Tab.1.left" timestamp="1584501511417">
+    <state width="1877" height="327" key="GridCell.Tab.1.center/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584674092688" />
+    <state width="1877" height="327" key="GridCell.Tab.1.left" timestamp="1584674092688">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.left/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584501511417" />
-    <state width="1877" height="327" key="GridCell.Tab.1.right" timestamp="1584501511417">
+    <state width="1877" height="327" key="GridCell.Tab.1.left/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584674092688" />
+    <state width="1877" height="327" key="GridCell.Tab.1.right" timestamp="1584674092688">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.right/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584501511417" />
+    <state width="1877" height="327" key="GridCell.Tab.1.right/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584674092688" />
     <state x="461" y="167" key="SettingsEditor" timestamp="1583078510167">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -415,14 +419,9 @@
           <option name="timeStamp" value="178" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pre_processing/util.py</url>
-          <line>45</line>
+          <url>file://$PROJECT_DIR$/helper/pre_processing.py</url>
+          <line>94</line>
           <option name="timeStamp" value="195" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pre_processing/video2image.py</url>
-          <line>40</line>
-          <option name="timeStamp" value="213" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/helper/losses.py</url>
@@ -570,11 +569,6 @@
           <option name="timeStamp" value="317" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pre_processing/video2image.py</url>
-          <line>33</line>
-          <option name="timeStamp" value="319" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test/bicubic.py</url>
           <line>19</line>
           <option name="timeStamp" value="320" />
@@ -583,11 +577,6 @@
           <url>file://$PROJECT_DIR$/test/bicubic.py</url>
           <line>18</line>
           <option name="timeStamp" value="321" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pre_processing/video2image.py</url>
-          <line>35</line>
-          <option name="timeStamp" value="322" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/pipeline/c3dgenrator.py</url>
@@ -609,6 +598,21 @@
           <line>69</line>
           <option name="timeStamp" value="334" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/helper/pre_processing.py</url>
+          <line>46</line>
+          <option name="timeStamp" value="336" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/helper/pre_processing.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="337" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/helper/pre_processing.py</url>
+          <line>23</line>
+          <option name="timeStamp" value="338" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
@@ -625,6 +629,7 @@
     <SUITE FILE_PATH="coverage/C3DLab$util.coverage" NAME="util Coverage Results" MODIFIED="1583164158877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pre_processing" />
     <SUITE FILE_PATH="coverage/C3DLab$train_srgan.coverage" NAME="train_srgan Coverage Results" MODIFIED="1584501581764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scipts" />
     <SUITE FILE_PATH="coverage/C3DLab$train_c3d.coverage" NAME="train_c3d Coverage Results" MODIFIED="1583935579262" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scipts" />
+    <SUITE FILE_PATH="coverage/C3DLab$video2image__1_.coverage" NAME="video2image (1) Coverage Results" MODIFIED="1584674092668" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scipts" />
     <SUITE FILE_PATH="coverage/C3DLab$c3dgenrator.coverage" NAME="c3dgenrator Coverage Results" MODIFIED="1584498161953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pipeline" />
     <SUITE FILE_PATH="coverage/C3DLab$vgg.coverage" NAME="vgg Coverage Results" MODIFIED="1584400349114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/C3DLab$generator__1_.coverage" NAME="generator (1) Coverage Results" MODIFIED="1583936899589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../BDD-100k/pipeline" />

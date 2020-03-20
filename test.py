@@ -1,5 +1,4 @@
-import cv2
-from pre_processing.util import *
+from helper.pre_processing import *
 
 video_info = video_files[0]
 data = generate_pickle(video_info, 'a')
