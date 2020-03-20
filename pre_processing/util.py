@@ -20,6 +20,7 @@ def extract_video(video_path, out_dir, name_length, ext='.jpg'):
     assert video_ext in ['.mp4', '.avi']
     cap = cv2.VideoCapture(video_path)
     counter = 0
+    length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
     while cap.isOpened():
         ret, frame = cap.read()
         if ret:
@@ -27,6 +28,9 @@ def extract_video(video_path, out_dir, name_length, ext='.jpg'):
             file_path = os.path.join(out_dir, file_name)
             cv2.imwrite(file_path, frame)
             counter = counter + 1
+            l1 = counter * 50 // length
+            print('Extracting {0}, Progress Bar: {1:><{len1}}{2:=<{len2}}. '
+                  '{3} of {4}'.format(video_path, '>', '=', counter, length, len1=l1, len2=50 - l1, ))
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
         else:

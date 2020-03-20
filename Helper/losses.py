@@ -53,14 +53,9 @@ def class_loss_cls(y_true, y_pred):
     return lambda_cls_class * bk.mean(categorical_crossentropy(y_true[0, :, :], y_pred[0, :, :]))
 
 
-class VGG_LOSS(object):
-
-    def __init__(self, image_shape):
-        self.image_shape = image_shape
-
-    # computes VGG loss or content loss
-    def vgg_loss(self, y_true, y_pred):
-        vgg19 = VGG19(include_top=False, weights='imagenet', input_shape=self.image_shape)
+def vgg_loss_d(image_shape):
+    def vgg_loss(y_true, y_pred):
+        vgg19 = VGG19(include_top=False, weights='imagenet', input_shape=image_shape)
         vgg19.trainable = False
         # Make trainable as False
         for l in vgg19.layers:
@@ -69,3 +64,5 @@ class VGG_LOSS(object):
         model.trainable = False
 
         return bk.mean(bk.square(model(y_true) - model(y_pred)))
+    return vgg_loss
+

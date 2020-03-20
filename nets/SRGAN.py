@@ -1,5 +1,4 @@
-from tensorflow_core.python.keras.engine.base_layer import Layer
-from tensorflow.keras.layers import Dense, Activation, Input, Flatten, add
+from tensorflow.python.keras.layers import Dense, Activation, Input, Flatten, add
 from tensorflow.python.keras.layers.normalization import BatchNormalization
 from tensorflow.python.keras.layers.convolutional import UpSampling2D
 from tensorflow.python.keras.layers.convolutional import Conv2D, Conv2DTranspose
@@ -58,7 +57,7 @@ class Generator(object):
         gen_model = model
 
         # Using 16 Residual Blocks
-        for index in range(16):
+        for index in range(8):
             model = res_block_gen(model, 3, 64, 1)
 
         model = Conv2D(filters=64, kernel_size=3, strides=1, padding="same")(model)

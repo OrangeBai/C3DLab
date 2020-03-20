@@ -2,7 +2,7 @@ from configs.base_config import *
 from helper.roi_helper import *
 import math
 import numpy as np
-from pipeline.generator import *
+from pipeline.c3dgenrator import *
 import random
 
 

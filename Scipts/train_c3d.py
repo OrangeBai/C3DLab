@@ -1,4 +1,4 @@
-from pipeline.generator import *
+from pipeline.c3dgenrator import *
 from tensorflow.keras.layers import Input
 from nets.extract_1 import *
 from tensorflow.python.keras.engine.training import Model
@@ -12,7 +12,7 @@ import tensorflow as tf
 
 num_frames = 5
 num_anchors = 15
-gen = Generator()
+gen = C3DGenerator(config.video_info)
 
 input_tensor = Input((5, 144, 144, 3))
 pre_roi = extract_layer(input_tensor)

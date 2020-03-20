@@ -1,19 +1,22 @@
-from nets.SRGAN import Generator, Discriminator
-from Utils_model import VGG_LOSS
+from nets.SRGAN import *
+from helper.losses import *
+from tensorflow.python.keras.layers import Input
+from tensorflow.python.keras.engine.training import Model
+from tensorflow.keras.optimizers import Adam
+from pipeline.c3dgenrator import *
+import tensorflow as tf
 
-from keras.models import Model
-from keras.layers import Input
-from tqdm import tqdm
-import numpy as np
-import argparse
-
-
+tf.config.experimental_run_functions_eagerly(True)
+gpus = tf.config.experimental.list_physical_devices('GPU')
+if gpus:
+    for gpu in gpus:
+        tf.config.experimental.set_memory_growth(gpu, False)
+        print('Set memery growth False')
 
 np.random.seed(10)
-# Better to use downscale factor as 4
 downscale_factor = 4
-# Remember to change image shape if you are having different size of images
-image_shape = (384, 384, 3)
+image_shape = (320, 240, 3)
+batch_size = 1
 
 
 # Combined network
@@ -30,94 +33,39 @@ def get_gan_network(discriminator, shape, generator, optimizer, vgg_loss):
     return gan
 
 
-# default values for all parameters are given, if want defferent values you can give via commandline
-# for more info use $python train.py -h
-def train(epochs, batch_size, input_dir, output_dir, model_save_dir, number_of_images, train_test_ratio):
-    x_train_lr, x_train_hr, x_test_lr, x_test_hr = Utils.load_training_data(input_dir, '.jpg', number_of_images,
-                                                                            train_test_ratio)
-    loss = VGG_LOSS(image_shape)
+shape = (image_shape[0] // downscale_factor, image_shape[1] // downscale_factor, image_shape[2])
 
-    batch_count = int(x_train_hr.shape[0] / batch_size)
-    shape = (image_shape[0] // downscale_factor, image_shape[1] // downscale_factor, image_shape[2])
+generator = Generator(shape).generator()
+discriminator = Discriminator(image_shape).discriminator()
 
-    generator = Generator(shape).generator()
-    discriminator = Discriminator(image_shape).discriminator()
+adam = Adam(lr=1E-4, beta_1=0.9, beta_2=0.999, epsilon=1e-08)
+generator.compile(loss=vgg_loss_d(image_shape), optimizer=adam)
+discriminator.compile(loss="binary_crossentropy", optimizer=adam)
 
-    optimizer = Utils_model.get_optimizer()
-    generator.compile(loss=loss.vgg_loss, optimizer=optimizer)
-    discriminator.compile(loss="binary_crossentropy", optimizer=optimizer)
-
-    gan = get_gan_network(discriminator, shape, generator, optimizer, loss.vgg_loss)
-
-    loss_file = open(model_save_dir + 'losses.txt', 'w+')
-    loss_file.close()
-
-    for e in range(1, epochs + 1):
-        print('-' * 15, 'Epoch %d' % e, '-' * 15)
-        for _ in tqdm(range(batch_count)):
-            rand_nums = np.random.randint(0, x_train_hr.shape[0], size=batch_size)
-
-            image_batch_hr = x_train_hr[rand_nums]
-            image_batch_lr = x_train_lr[rand_nums]
-            generated_images_sr = generator.predict(image_batch_lr)
-
-            real_data_Y = np.ones(batch_size) - np.random.random_sample(batch_size) * 0.2
-            fake_data_Y = np.random.random_sample(batch_size) * 0.2
-
-            discriminator.trainable = True
-
-            d_loss_real = discriminator.train_on_batch(image_batch_hr, real_data_Y)
-            d_loss_fake = discriminator.train_on_batch(generated_images_sr, fake_data_Y)
-            discriminator_loss = 0.5 * np.add(d_loss_fake, d_loss_real)
-
-            rand_nums = np.random.randint(0, x_train_hr.shape[0], size=batch_size)
-            image_batch_hr = x_train_hr[rand_nums]
-            image_batch_lr = x_train_lr[rand_nums]
-
-            gan_Y = np.ones(batch_size) - np.random.random_sample(batch_size) * 0.2
-            discriminator.trainable = False
-            gan_loss = gan.train_on_batch(image_batch_lr, [image_batch_hr, gan_Y])
-
-        print("discriminator_loss : %f" % discriminator_loss)
-        print("gan_loss :", gan_loss)
-        gan_loss = str(gan_loss)
-
-        loss_file = open(model_save_dir + 'losses.txt', 'a')
-        loss_file.write('epoch%d : gan_loss = %s ; discriminator_loss = %f\n' % (e, gan_loss, discriminator_loss))
-        loss_file.close()
-
-        if e == 1 or e % 5 == 0:
-            Utils.plot_generated_images(output_dir, e, generator, x_test_hr, x_test_lr)
-        if e % 500 == 0:
-            generator.save(model_save_dir + 'gen_model%d.h5' % e)
-            discriminator.save(model_save_dir + 'dis_model%d.h5' % e)
+shape = (image_shape[0] // downscale_factor, image_shape[1] // downscale_factor, 3)
+gan = get_gan_network(discriminator, shape, generator, adam, vgg_loss_d(image_shape))
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
+srgan_g = SRGANGenerator(config.hr_video_info)
+for i in range(1000):
+    img, tag = srgan_g.next()
+    img = cv2.resize(img, (image_shape[1], image_shape[0]))
+    img_lr = cv2.resize(img, (shape[1], shape[0]))
+    img = np.expand_dims(img, axis=0).astype('float32')
+    img_lr = np.expand_dims(img_lr, axis=0).astype('float32')
 
-    parser.add_argument('-i', '--input_dir', action='store', dest='input_dir', default='./data/',
-                        help='Path for input images')
+    real_data_Y = np.ones(batch_size) - np.random.random_sample(batch_size) * 0.2
+    fake_data_Y = np.random.random_sample(batch_size) * 0.2
 
-    parser.add_argument('-o', '--output_dir', action='store', dest='output_dir', default='./output/',
-                        help='Path for Output images')
+    discriminator.trainable = True
 
-    parser.add_argument('-m', '--model_save_dir', action='store', dest='model_save_dir', default='./model/',
-                        help='Path for model')
+    generated_images_sr = generator.predict(img_lr)
 
-    parser.add_argument('-b', '--batch_size', action='store', dest='batch_size', default=64,
-                        help='Batch Size', type=int)
+    d_loss_real = discriminator.train_on_batch(img, real_data_Y)
+    d_loss_fake = discriminator.train_on_batch(generated_images_sr, fake_data_Y)
+    discriminator_loss = 0.5 * np.add(d_loss_fake, d_loss_real)
+    print('discriminator loss:{0}'.format(discriminator_loss))
 
-    parser.add_argument('-e', '--epochs', action='store', dest='epochs', default=1000,
-                        help='number of iteratios for trainig', type=int)
-
-    parser.add_argument('-n', '--number_of_images', action='store', dest='number_of_images', default=1000,
-                        help='Number of Images', type=int)
-
-    parser.add_argument('-r', '--train_test_ratio', action='store', dest='train_test_ratio', default=0.8,
-                        help='Ratio of train and test Images', type=float)
-
-    values = parser.parse_args()
-
-    train(values.epochs, values.batch_size, values.input_dir, values.output_dir, values.model_save_dir,
-          values.number_of_images, values.train_test_ratio)
+    gan_Y = np.ones(batch_size) - np.random.random_sample(batch_size) * 0.2
+    gan_loss = gan.train_on_batch(img_lr, [img, gan_Y])
+    print('gan loss:{0}'.format(gan_loss))
