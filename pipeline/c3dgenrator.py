@@ -63,15 +63,15 @@ class C3DGenerator(DataGenerator):
         ed_idx = pic_idx + math.ceil((self.clip_length - 1) / 2)
         if ed_idx >= video_length or st_idx < 0:
             return None
-        for i in range(st_idx, ed_idx + 1):
-            cur_img_path = os.path.join(cur_video_info['img_dir'], str(i).zfill(6) + '.jpg')
+        for frame_idx in range(st_idx, ed_idx + 1):
+            cur_img_path = os.path.join(cur_video_info['img_dir'], str(frame_idx).zfill(6) + '.jpg')
             cur_img = cv2.imread(cur_img_path)
             cur_clip.append(cur_img)
 
         video_label = cur_video_info['label']
-        for i in range(2):
-            cur_tag['pos'].append(video_label[1][i][st_idx: ed_idx + 1])
-            cur_tag['action'].append(video_label[0][i][pic_idx])
+        for fly_idx in range(2):
+            cur_tag['pos'].append(video_label[1][fly_idx][st_idx: ed_idx + 1])
+            cur_tag['action'].append(video_label[0][fly_idx][pic_idx])
 
         cur_clip = np.array(cur_clip)
         cur_clip = np.expand_dims(cur_clip, 0)
@@ -129,11 +129,12 @@ class SRGANGenerator(DataGenerator):
 
 
 if __name__ == '__main__':
-    g = C3DGenerator(config.video_info)
-    for i in range(10):
-        next(g)
-        print(i)
-    print(1)
-    g2 = SRGANGenerator(config.hr_video_info)
-    a = g2.next()
-    print(1)
+    # g = C3DGenerator(config.video_info)
+    # for i in range(10):
+    #     next(g)
+    #     print(i)
+    # print(1)
+    # g2 = SRGANGenerator(config.hr_video_info)
+    # a = g2.next()
+    # print(1)
+    pass
