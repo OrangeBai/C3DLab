@@ -144,15 +144,16 @@ def cal_bbox(data):
     xc, yc, ori, l, d = data[:5]
     w1, w2 = data[-2:]
     if not math.isnan(w1) and not math.isnan(w2):
-        l = l + (w1 + w2) / 2
+        l = l + (w1 + w2) / 3
+        d = d + (w1 + w2) / 3
     ori = ori % math.pi
     if 0 <= ori < math.pi / 2:
-        h = l / 2 * math.sin(ori) + d / 2 * math.cos(ori) + 2
-        w = l / 2 * math.cos(ori) + d / 2 * math.sin(ori) + 2
+        h = l / 2 * math.sin(ori) + d / 2 * math.cos(ori)
+        w = l / 2 * math.cos(ori) + d / 2 * math.sin(ori)
         bbox = [xc - w, yc - h, xc + w, yc + h]
     else:
-        h = l / 2 * math.sin(ori - math.pi / 2) + d / 2 * math.cos(ori - math.pi / 2) + 2
-        w = l / 2 * math.cos(ori - math.pi / 2) + d / 2 * math.sin(ori - math.pi / 2) + 2
+        h = l / 2 * math.sin(math.pi - ori) + d / 2 * math.cos(math.pi - ori)
+        w = l / 2 * math.cos(math.pi - ori) + d / 2 * math.sin(math.pi - ori)
         bbox = [xc - w, yc - h, xc + w, yc + h]
     for i in range(4):
         cor = bbox[i]

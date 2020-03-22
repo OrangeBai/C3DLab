@@ -1,17 +1,21 @@
 import os
-import config
 import json
 import math
 import cv2
 import numpy as np
+from copy import *
 from random import randint, choice
+import config as c
+from helper.utils import draw_pic
+from helper.utils import *
 
 
 class DataGenerator:
-    def __init__(self, info_path, batch_size=1):
+    def __init__(self, info_path, shape=None, batch_size=1):
         self.data_store = None
         self.__load_info__(info_path)
         self.batch_size = batch_size
+        self.shape = shape
 
     def __load_info__(self, info_path):
         with open(info_path, 'r') as file:
@@ -21,15 +25,53 @@ class DataGenerator:
         pass
 
     def next(self):
-        return self.__next__()
+        """
+        Next image with tags
+        :return:
+        """
+        pass
 
     def __iter__(self):
         return self
 
+    @staticmethod
+    def np_pack(imgs, tags):
+        imgs = np.array(imgs).astype('float32')
+        tags[0] = np.array(tags[0]).astype('float32')
+        tags[1] = np.array(tags[1]).astype('float32')
+        return imgs, tags
+
+    def gen_label(self, clip_idx):
+        video_idx, pic_idx = clip_idx
+        cur_tag = [[], []]
+        cur_video_info = self.data_store[video_idx]
+        cur_img_path = os.path.join(cur_video_info['img_dir'], str(pic_idx).zfill(6) + '.jpg')
+        cur_img = cv2.imread(cur_img_path)
+        video_label = cur_video_info['label']
+        for i in range(2):
+            cur_tag[0].append(video_label[1][i][pic_idx])
+            cur_tag[1].append(video_label[0][i][pic_idx])
+        cur_img = np.array(cur_img).astype(float)
+        cur_tag[0] = np.array(cur_tag[0]).astype(float)
+        cur_tag[1] = np.array(cur_tag[1]).astype(float)
+        if self.shape is not None:
+            cur_img, cur_tag = self.resize(cur_img, cur_tag, self.shape)
+        return cur_img, cur_tag
+
+    @staticmethod
+    def resize(img, tag, shape):
+        new_tag = deepcopy(tag)
+        img_shape = [img.shape[1], img.shape[0], img.shape[2]]
+
+        new_img = cv2.resize(img, shape[:2])
+        new_tag[0][:, [0, 2]] = new_tag[0][:, [0, 2]] * shape[0] / img_shape[0]
+        new_tag[0][:, [1, 3]] = new_tag[0][:, [1, 3]] * shape[1] / img_shape[1]
+        return new_img, new_tag
+
 
 class C3DGenerator(DataGenerator):
-    def __init__(self, info_path, batch_size=1):
-        super().__init__(info_path, batch_size)
+    def __init__(self, info_path, shape=None, batch_size=1):
+        super().__init__(info_path, shape, batch_size)
         self.clip_length = 5
         self.action_counter = []
         self.action_indexer = {}
@@ -58,33 +100,35 @@ class C3DGenerator(DataGenerator):
         :param clip_idx: (video_idx, frame_idx)
         :return: pic, label
         """
+        clip = []
+        tag = [[], []]
+
         video_idx, pic_idx = clip_idx
-        cur_clip = []
-        cur_tag = {'action': [], 'pos': []}
-        cur_video_info = self.data_store[video_idx]
-        video_length = len(cur_video_info['label'][0][0])
         st_idx = pic_idx - math.ceil((self.clip_length - 1) / 2)
         ed_idx = pic_idx + math.ceil((self.clip_length - 1) / 2)
+
+        cur_video_info = self.data_store[video_idx]
+        video_length = len(cur_video_info['label'][0][0])
         if ed_idx >= video_length or st_idx < 0:
             return None
         for frame_idx in range(st_idx, ed_idx + 1):
-            cur_img_path = os.path.join(cur_video_info['img_dir'], str(frame_idx).zfill(6) + '.jpg')
-            cur_img = cv2.imread(cur_img_path)
-            cur_clip.append(cur_img)
-
-        video_label = cur_video_info['label']
-        for fly_idx in range(2):
-            cur_tag['pos'].append(video_label[1][fly_idx][st_idx: ed_idx + 1])
-            cur_tag['action'].append(video_label[0][fly_idx][pic_idx])
-
-        cur_clip = np.array(cur_clip)
-        cur_clip = np.expand_dims(cur_clip, 0)
-        cur_label = [np.array(cur_tag['pos']).transpose([1, 0, 2]), np.array(cur_tag['action'])]
-
-        return cur_clip, cur_label
+            cur_img, cur_tag = super().gen_label(clip_idx)
+            clip.append(cur_img)
+            tag[0].append(cur_tag[0])
+            if frame_idx == pic_idx:
+                tag[1] = cur_tag[1]
+        return clip, tag
 
     def __next__(self):
-        return self.next()
+        imgs = []
+        tags = [[], []]
+        for i in range(self.batch_size):
+            img, tag = self.next()
+            imgs.append(img)
+            tags[0].append(tag[0])
+            tags[1].append(tag[1])
+        imgs, tags = self.np_pack(imgs, tags)
+        return imgs, tags
 
     def next(self):
         while 1:
@@ -106,39 +150,33 @@ class C3DGenerator(DataGenerator):
 
 
 class SRGANGenerator(DataGenerator):
-    def __init__(self, info_path, batch_size=1):
-        super().__init__(info_path, batch_size)
+    def __init__(self, info_path, new_shape, lr_shape, batch_size=1):
+        super().__init__(info_path, new_shape, batch_size)
+        self.lr_shape = lr_shape
 
     def gen_label(self, clip_idx):
-        video_idx, pic_idx = clip_idx
-        cur_tag = {'action': [], 'pos': []}
-        cur_video_info = self.data_store[video_idx]
-        cur_img_path = os.path.join(cur_video_info['img_dir'], str(pic_idx).zfill(6) + '.jpg')
-        cur_img = cv2.imread(cur_img_path)
-        video_label = cur_video_info['label']
-        for i in range(2):
-            cur_tag['pos'].append(video_label[1][i][pic_idx])
-            cur_tag['action'].append(video_label[0][i][pic_idx])
-
-        return np.array(cur_img), [np.array(cur_tag['pos']), np.array(cur_tag['action'])]
+        img_hr, tag_hr = super().gen_label(clip_idx)
+        img_lr, tag_lr = self.resize(img_hr, tag_hr, self.lr_shape)
+        return img_hr, tag_hr, img_lr, tag_lr
 
     def __next__(self):
-        imgs = []
-        pos = []
-        action = []
+        imgs_hr, imgs_lr = [], []
+        tags_hr, tags_lr = [[], []], [[], []]
         for i in range(self.batch_size):
-            img, tag = self.next()
-            imgs.append(img)
-            pos.append(tag[0])
-            action.append(tag[1])
-        imgs = np.array(imgs).astype('float32')
-        pos = np.array(pos).astype('float32')
-        action = np.array(action).astype('float32')
-        if self.batch_size == 1:
-            imgs = np.expand_dims(imgs, axis=0)
-            pos = np.expand_dims(pos, axis=0)
-            action = np.expand_dims(action, axis=0)
-        return imgs, [pos, action]
+            img_hr, tag_hr, img_lr, tag_lr = self.next()
+
+            imgs_hr.append(img_hr)
+            tags_hr[0].append(tag_hr[0])
+            tags_hr[1].append(tag_hr[1])
+
+            imgs_lr.append(img_lr)
+            tags_lr[0].append(tag_lr[0])
+            tags_lr[1].append(tag_lr[1])
+        imgs_hr, tags_hr = self.np_pack(imgs_hr, tags_hr)
+        imgs_lr, tags_lr = self.np_pack(imgs_lr, tags_lr)
+        imgs_hr = normalize_m11(imgs_hr)
+        imgs_lr = normalize_m11(imgs_lr)
+        return imgs_hr, tags_hr, imgs_lr, tags_lr
 
     def next(self):
         cur_store_idx = choice(range(len(self.data_store)))
@@ -150,13 +188,11 @@ class SRGANGenerator(DataGenerator):
 
 
 if __name__ == '__main__':
-    # g = C3DGenerator(config.video_info, batch_size=1)
-    # for i in range(10):
-    #     b = next(g)
-    #     print(i)
+    # g = C3DGenerator(c.agg_info_path, c.clip_shape, 1)
+    # a = g.__next__()
+    # g2 = SRGANGenerator(c.bmb_info_path, c.image_shape_hr, c.image_shape_lr, 1)
+    # b = g2.__next__()
+    # draw_pic(b[0][0], b[1][0][0])
+    # draw_pic(b[2][0], b[3][0][0])
     # print(1)
-    g2 = SRGANGenerator(config.hr_video_info, 4)
-    g = iter(g2)
-    a = next(g)
-    print(1)
     pass

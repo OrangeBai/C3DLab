@@ -53,8 +53,8 @@ def class_loss_cls(y_true, y_pred):
     return lambda_cls_class * bk.mean(categorical_crossentropy(y_true[0, :, :], y_pred[0, :, :]))
 
 
-def vgg_loss_d(image_shape):
-    def vgg_loss(y_true, y_pred):
+def vgg_loss(image_shape):
+    def vgg_loss_fixed_img(y_true, y_pred):
         vgg19 = VGG19(include_top=False, weights='imagenet', input_shape=image_shape)
         vgg19.trainable = False
         # Make trainable as False
@@ -64,5 +64,5 @@ def vgg_loss_d(image_shape):
         model.trainable = False
 
         return bk.mean(bk.square(model(y_true) - model(y_pred)))
-    return vgg_loss
+    return vgg_loss_fixed_img
 

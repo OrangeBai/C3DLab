@@ -2,13 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe428333-af89-4864-bf18-5ff9ac28d3b3" name="Default" comment="some changes">
-      <change afterPath="$PROJECT_DIR$/config_srgan.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/jzp0306.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/jzp0306.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Helper/utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/nets.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Helper/losses.py" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/losses.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Helper/pre_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/Helper/pre_processing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scipts/train_srgan.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scipts/train_srgan.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nets/SRGAN.py" beforeDir="false" afterPath="$PROJECT_DIR$/nets/SRGAN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scipts/video2image.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scipts/video2image.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config_srgan.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/classifier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/resnet.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/toi_pooling.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/vgg.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nets/LocateNet.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nets/RoiPoolingConv.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nets/SPNPoolingConv.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nets/SRGAN.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nets/VGG16.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nets/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/SPGAN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nets/extract_1.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pipeline/c3dgenrator.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/c3dgenrator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,8 +68,8 @@
       <recent name="F:\Code\Computer Science\C3DLab\pipeline" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.c3dgenrator">
-    <configuration name="ViBe" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.train_srgan">
+    <configuration name="SPGAN" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="C3DLab" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -63,12 +77,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/helper" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/helper/ViBe.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/SPGAN.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -91,6 +105,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pipeline/c3dgenrator.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="config" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="C3DLab" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/config.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -143,42 +179,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="video2image" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="C3DLab" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pre_processing" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="F:\Code\Computer Science\C3DLab\scipts\video2image.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Python.ViBe" />
       <item itemvalue="Python.c3dgenrator" />
       <item itemvalue="Python.train_srgan" />
-      <item itemvalue="Python.video2image" />
       <item itemvalue="Python.video2image (1)" />
+      <item itemvalue="Python.SPGAN" />
+      <item itemvalue="Python.config" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.c3dgenrator" />
-        <item itemvalue="Python.video2image (1)" />
         <item itemvalue="Python.train_srgan" />
-        <item itemvalue="Python.ViBe" />
-        <item itemvalue="Python.video2image" />
+        <item itemvalue="Python.video2image (1)" />
+        <item itemvalue="Python.config" />
+        <item itemvalue="Python.SPGAN" />
+        <item itemvalue="Python.c3dgenrator" />
       </list>
     </recent_temporary>
   </component>
@@ -204,7 +218,9 @@
       <workItem from="1584320934934" duration="3316000" />
       <workItem from="1584390311771" duration="11981000" />
       <workItem from="1584493856504" duration="7861000" />
-      <workItem from="1584672613627" duration="4731000" />
+      <workItem from="1584672613627" duration="4773000" />
+      <workItem from="1584722015250" duration="6634000" />
+      <workItem from="1584804250111" duration="50625000" />
     </task>
     <task id="LOCAL-00001" summary="some changes">
       <created>1583239248527</created>
@@ -262,7 +278,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584674280922</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="some changes">
+      <created>1584677371477</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1584677371477</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,58 +308,66 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="484" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584494776205" />
+    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584835046551">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584835046551" />
     <state x="679" y="120" key="#vgg16" timestamp="1583078445959">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="679" y="120" key="#vgg16/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583078445959" />
-    <state x="923" y="268" width="914" height="782" key="#xdebugger.evaluate" timestamp="1584677148247">
+    <state x="750" y="268" width="914" height="782" key="#xdebugger.evaluate" timestamp="1584896517166">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="923" y="268" width="914" height="782" key="#xdebugger.evaluate/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584677148247" />
-    <state x="594" y="117" key="CommitChangelistDialog2" timestamp="1584674279916">
+    <state x="750" y="268" width="914" height="782" key="#xdebugger.evaluate/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584896517166" />
+    <state x="594" y="117" key="CommitChangelistDialog2" timestamp="1584677370122">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="594" y="117" key="CommitChangelistDialog2/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584674279916" />
+    <state x="594" y="117" key="CommitChangelistDialog2/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584677370122" />
+    <state width="651" height="466" key="DebuggerActiveHint" timestamp="1584841933666">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="651" height="466" key="DebuggerActiveHint/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584841933666" />
     <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1584321327187">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="740" y="280" key="FileChooserDialogImpl/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584321327187" />
-    <state width="1877" height="327" key="GridCell.Tab.0.bottom" timestamp="1584677269246">
+    <state width="1877" height="222" key="GridCell.Tab.0.bottom" timestamp="1584912785314">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1237" height="180" key="GridCell.Tab.0.bottom/-1920.0.1280.700/0.0.1920.1050@-1920.0.1280.700" timestamp="1584414343629" />
-    <state width="1877" height="327" key="GridCell.Tab.0.bottom/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584677269246" />
-    <state width="1877" height="327" key="GridCell.Tab.0.center" timestamp="1584677269246">
+    <state width="1877" height="222" key="GridCell.Tab.0.bottom/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584912785314" />
+    <state width="1877" height="222" key="GridCell.Tab.0.center" timestamp="1584912785313">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1237" height="180" key="GridCell.Tab.0.center/-1920.0.1280.700/0.0.1920.1050@-1920.0.1280.700" timestamp="1584414343629" />
-    <state width="1877" height="327" key="GridCell.Tab.0.center/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584677269246" />
-    <state width="1877" height="327" key="GridCell.Tab.0.left" timestamp="1584677269246">
+    <state width="1877" height="222" key="GridCell.Tab.0.center/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584912785313" />
+    <state width="1877" height="222" key="GridCell.Tab.0.left" timestamp="1584912785313">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1237" height="180" key="GridCell.Tab.0.left/-1920.0.1280.700/0.0.1920.1050@-1920.0.1280.700" timestamp="1584414343628" />
-    <state width="1877" height="327" key="GridCell.Tab.0.left/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584677269246" />
-    <state width="1877" height="327" key="GridCell.Tab.0.right" timestamp="1584677269246">
+    <state width="1877" height="222" key="GridCell.Tab.0.left/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584912785313" />
+    <state width="1877" height="222" key="GridCell.Tab.0.right" timestamp="1584912785314">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1237" height="180" key="GridCell.Tab.0.right/-1920.0.1280.700/0.0.1920.1050@-1920.0.1280.700" timestamp="1584414343629" />
-    <state width="1877" height="327" key="GridCell.Tab.0.right/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584677269246" />
-    <state width="1877" height="327" key="GridCell.Tab.1.bottom" timestamp="1584677271516">
+    <state width="1877" height="222" key="GridCell.Tab.0.right/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584912785314" />
+    <state width="1877" height="327" key="GridCell.Tab.1.bottom" timestamp="1584911244141">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.bottom/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584677271516" />
-    <state width="1877" height="327" key="GridCell.Tab.1.center" timestamp="1584677271516">
+    <state width="1877" height="327" key="GridCell.Tab.1.bottom/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584911244141" />
+    <state width="1877" height="327" key="GridCell.Tab.1.center" timestamp="1584911244141">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.center/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584677271516" />
-    <state width="1877" height="327" key="GridCell.Tab.1.left" timestamp="1584677271515">
+    <state width="1877" height="327" key="GridCell.Tab.1.center/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584911244141" />
+    <state width="1877" height="327" key="GridCell.Tab.1.left" timestamp="1584911244141">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.left/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584677271515" />
-    <state width="1877" height="327" key="GridCell.Tab.1.right" timestamp="1584677271516">
+    <state width="1877" height="327" key="GridCell.Tab.1.left/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584911244141" />
+    <state width="1877" height="327" key="GridCell.Tab.1.right" timestamp="1584911244141">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="327" key="GridCell.Tab.1.right/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584677271516" />
+    <state width="1877" height="327" key="GridCell.Tab.1.right/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584911244141" />
     <state x="461" y="167" key="SettingsEditor" timestamp="1583078510167">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -345,10 +376,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="968" height="533" key="XDebugger.FullValuePopup/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1583162120620" />
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1584672779280">
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1584804349244">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584672779280" />
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/-1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1584804349244" />
     <state x="504" y="261" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1583161444560">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -442,101 +473,6 @@
           <option name="timeStamp" value="281" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
-          <line>34</line>
-          <option name="timeStamp" value="285" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
-          <line>31</line>
-          <option name="timeStamp" value="286" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
-          <line>37</line>
-          <option name="timeStamp" value="287" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
-          <line>43</line>
-          <option name="timeStamp" value="288" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
-          <line>50</line>
-          <option name="timeStamp" value="289" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
-          <line>60</line>
-          <option name="timeStamp" value="290" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
-          <line>63</line>
-          <option name="timeStamp" value="291" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
-          <line>27</line>
-          <option name="timeStamp" value="292" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
-          <line>28</line>
-          <option name="timeStamp" value="293" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
-          <line>29</line>
-          <option name="timeStamp" value="294" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
-          <line>51</line>
-          <option name="timeStamp" value="295" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
-          <line>53</line>
-          <option name="timeStamp" value="296" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
-          <line>55</line>
-          <option name="timeStamp" value="297" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
-          <line>57</line>
-          <option name="timeStamp" value="298" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
-          <line>58</line>
-          <option name="timeStamp" value="299" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
-          <line>44</line>
-          <option name="timeStamp" value="300" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
-          <line>56</line>
-          <option name="timeStamp" value="301" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
-          <line>64</line>
-          <option name="timeStamp" value="302" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nets/RoiPoolingConv.py</url>
-          <line>66</line>
-          <option name="timeStamp" value="303" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/../BDD-100k/nets/RoiPoolingConv.py</url>
           <line>55</line>
           <option name="timeStamp" value="305" />
@@ -562,39 +498,39 @@
           <option name="timeStamp" value="321" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/pipeline/c3dgenrator.py</url>
-          <line>160</line>
-          <option name="timeStamp" value="327" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scipts/train_srgan.py</url>
-          <line>38</line>
-          <option name="timeStamp" value="332" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scipts/train_srgan.py</url>
-          <line>37</line>
-          <option name="timeStamp" value="333" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/scipts/train_srgan.py</url>
-          <line>43</line>
-          <option name="timeStamp" value="334" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/helper/pre_processing.py</url>
           <line>47</line>
           <option name="timeStamp" value="336" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/helper/pre_processing.py</url>
-          <line>23</line>
-          <option name="timeStamp" value="337" />
+          <line>149</line>
+          <option name="timeStamp" value="346" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/helper/pre_processing.py</url>
-          <line>24</line>
-          <option name="timeStamp" value="338" />
+          <line>143</line>
+          <option name="timeStamp" value="347" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/helper/pre_processing.py</url>
+          <line>131</line>
+          <option name="timeStamp" value="348" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/pipeline/c3dgenrator.py</url>
+          <line>196</line>
+          <option name="timeStamp" value="350" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/helper/losses.py</url>
+          <line>65</line>
+          <option name="timeStamp" value="374" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scipts/train_srgan.py</url>
+          <line>59</line>
+          <option name="timeStamp" value="389" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -610,17 +546,20 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/C3DLab$util.coverage" NAME="util Coverage Results" MODIFIED="1583164158877" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pre_processing" />
-    <SUITE FILE_PATH="coverage/C3DLab$train_srgan.coverage" NAME="train_srgan Coverage Results" MODIFIED="1584501581764" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scipts" />
+    <SUITE FILE_PATH="coverage/C3DLab$train_srgan.coverage" NAME="train_srgan Coverage Results" MODIFIED="1584912785302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scipts" />
     <SUITE FILE_PATH="coverage/C3DLab$train_c3d.coverage" NAME="train_c3d Coverage Results" MODIFIED="1583935579262" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scipts" />
-    <SUITE FILE_PATH="coverage/C3DLab$video2image__1_.coverage" NAME="video2image (1) Coverage Results" MODIFIED="1584676696340" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scipts" />
-    <SUITE FILE_PATH="coverage/C3DLab$c3dgenrator.coverage" NAME="c3dgenrator Coverage Results" MODIFIED="1584677269117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pipeline" />
+    <SUITE FILE_PATH="coverage/C3DLab$video2image__1_.coverage" NAME="video2image (1) Coverage Results" MODIFIED="1584909680662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/scipts" />
+    <SUITE FILE_PATH="coverage/C3DLab$c3dgenrator.coverage" NAME="c3dgenrator Coverage Results" MODIFIED="1584842978957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pipeline" />
+    <SUITE FILE_PATH="coverage/C3DLab$config.coverage" NAME="config Coverage Results" MODIFIED="1584907931573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/C3DLab$vgg.coverage" NAME="vgg Coverage Results" MODIFIED="1584400349114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/C3DLab$generator__1_.coverage" NAME="generator (1) Coverage Results" MODIFIED="1583936899589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../BDD-100k/pipeline" />
     <SUITE FILE_PATH="coverage/C3DLab$vgg16.coverage" NAME="vgg16 Coverage Results" MODIFIED="1583078446016" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../BDD-100k/nets" />
     <SUITE FILE_PATH="coverage/C3DLab$SPN.coverage" NAME="SPN Coverage Results" MODIFIED="1583875591074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pipeline" />
     <SUITE FILE_PATH="coverage/C3DLab$bicubic.coverage" NAME="bicubic Coverage Results" MODIFIED="1584402140445" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/C3DLab$generator.coverage" NAME="generator Coverage Results" MODIFIED="1583770416530" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pipeline" />
+    <SUITE FILE_PATH="coverage/C3DLab$SPGAN.coverage" NAME="SPGAN Coverage Results" MODIFIED="1584845757864" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
     <SUITE FILE_PATH="coverage/C3DLab$ViBe.coverage" NAME="ViBe Coverage Results" MODIFIED="1584414343599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/helper" />
+    <SUITE FILE_PATH="coverage/C3DLab$pre_processing.coverage" NAME="pre_processing Coverage Results" MODIFIED="1584816098631" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/helper" />
     <SUITE FILE_PATH="coverage/C3DLab$train_frcnn.coverage" NAME="train_frcnn Coverage Results" MODIFIED="1583940806941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../BDD-100k/scripts" />
     <SUITE FILE_PATH="coverage/C3DLab$video2image.coverage" NAME="video2image Coverage Results" MODIFIED="1584402173879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pre_processing" />
   </component>
